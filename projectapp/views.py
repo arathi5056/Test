@@ -26,19 +26,22 @@ from django.views.decorators.csrf import csrf_exempt
 def responseform(request):
  #if form is submitted
      form = MyForm()
+     #if 'do-something-else' in request.POST:
+      # return render(request,'home.html')
      if request.method == 'POST':
         
         myForm = MyForm(request.POST)
 
         if myForm.is_valid():
             feild_val=myForm.cleaned_data['geeks_field']
-            xcsv = myForm.cleaned_data['name']
-            ycsv = myForm.cleaned_data['email']
-            radio=myForm.cleaned_data['radio']
+            xcsv = myForm.cleaned_data['xcsv']
+            ycsv = myForm.cleaned_data['ycsv']
+            corr=get_corelation(xcsv,ycsv)
+            #radio=myForm.cleaned_data['radio']
             #feedback = myForm.cleaned_data['feedback']
-            corr=get_corelation('Total_number_of_students','Positive_cases')
+            #corr=get_corelation('Total_number_of_students','Positive_cases')
             context = {
-            'name': radio,
+            'name': xcsv,
             'email': corr
             #'feedback': feedback
             }

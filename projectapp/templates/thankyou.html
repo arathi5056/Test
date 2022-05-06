@@ -24,5 +24,11 @@ Very simply, a score of 0 indicates that there is no correlation</p>
             <!--<li>Feedback: <strong>{{ feedback }}</strong></li>-->
           </ul>
 </form>
+<!--
+<img src="data:image/png;base64, {{ gragh_totalcases|safe }}" alt="" id="img" width="800" height="700">
+
+-->
+{{ p_data|safe }}
+<img src="data:image/png;base64, {{ p_data|safe }}" alt="" id="img" width="800" height="700">
 </body>
 </html>

@@ -14,13 +14,53 @@ def index(request):
 
  
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import redirect, render
+
+@csrf_exempt 
+def loaddata(request):
+  form= InputForm(request.POST)
+    #if 'submit' in request.POST:
+      #form= InputForm(request.POST)
+  if form.is_valid():
+    datar = form.cleaned_data['geeks_field']
+    print(datar)
+    if 'submit' in request.POST :
+       print('THis is regression')
+       datar= linearregessionc19()
+       context={
+         'datasetname':datar
+       }
+       template = loader.get_template('home.html')
+       return HttpResponse(template.render(context,request))
+
+      #return HttpResponse(template.render(context,request))
+    #context={
+        # 'dataseturl':datar,
+       #  'form':form
+      # }
+    #template = loader.get_template('responseform.html')
+    #return HttpResponse(template.render(context,request))
+    #return redirect('/responseform.html')
+  return render(request,"loaddata.html",{'form':form})
+
+@csrf_exempt 
 def home_view(request):
-    context ={}
-    context['form']= InputForm()
-
-   
-
-    return render(request,"home.html", context)
+  form= InputForm(request.POST)
+    #if 'submit' in request.POST:
+      #form= InputForm(request.POST)
+  if form.is_valid():
+    datar = form.cleaned_data['geeks_field']
+    print(datar)
+      #return HttpResponse(template.render(context,request))
+    #context={
+        # 'dataseturl':datar,
+       #  'form':form
+      # }
+    #template = loader.get_template('responseform.html')
+    #return HttpResponse(template.render(context,request))
+    #return redirect('/responseform.html')
+  return render(request,"home.html",{'form':form})
 
 from django.views.decorators.csrf import csrf_exempt
 
@@ -60,7 +100,7 @@ def responseform(request):
         myForm = MyForm(request.POST)
 
         if myForm.is_valid():
-            feild_val=myForm.cleaned_data['geeks_field']
+            #feild_val=myForm.cleaned_data['geeks_field']
             xcsv = myForm.cleaned_data['xcsv']
             ycsv = myForm.cleaned_data['ycsv']
             corr=get_corelation(xcsv,ycsv)
@@ -80,8 +120,7 @@ def responseform(request):
             template = loader.get_template('thankyou.html')
             
 
-            logging.debug("Log message goes here.")
-            #returing the template
+              #returing the template
             return HttpResponse(template.render(context,request))
 
      

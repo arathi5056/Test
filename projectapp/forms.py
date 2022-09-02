@@ -11,10 +11,13 @@ d1=zip(lt,lt)
 csvc=dict(d1)
 d1=dict(enumerate(lt))
 
- 
+dataset =	{
+  "current-covid-patients-hospitalizations": "https://github.com/arathi5056/datasets/blob/master/current-covid-patients-hospitalizations.csv?raw=true",
+  "us_state_vaccinations":"https://github.com/arathi5056/datasets/blob/master/us_state_vaccinations.csv"
+} 
 GEEKS_CHOICES =( 
-    ("1", "One"), 
-    ("2", "Two"), 
+    ("current-covid-patients-hospitalizations", "one"), 
+    ("us_state_vaccinations", "Two"), 
     ("3", "Three"), 
     ("4", "Four"), 
     ("5", "Five"), 
@@ -24,10 +27,10 @@ CHOICES=[('select1','select 1'),
          ('select2','select 2')]
 # creating a form
 class InputForm(forms.Form):
- 
-    Usercsv = forms.FileField (label='Select a file')
-    xvalue_csv = forms.CharField(max_length = 200)
-    yvalue_csv = forms.CharField(max_length = 200)
+    geeks_field = forms.ChoiceField(choices = GEEKS_CHOICES)
+    #Usercsv = forms.FileField (label='Select a file')
+    #xvalue_csv = forms.CharField(max_length = 200)
+    #yvalue_csv = forms.CharField(max_length = 200)
     #roll_number = forms.IntegerField(
      #                help_text = "Enter 6 digit roll number"
       #               )
@@ -38,7 +41,10 @@ class MyForm(forms.Form):
   
   #radio = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect)
   #Usercsv = forms.FileField (label='Select a file')
-  geeks_field = forms.ChoiceField(choices = GEEKS_CHOICES)
+
+  #geeks_field = forms.ChoiceField(choices = GEEKS_CHOICES)
+
+ 
   xcsv = forms.ChoiceField(choices=[(x, x) for x in lt])
   ycsv = forms.ChoiceField(choices=[(x, x) for x in lt])
   #name = forms.CharField(label='Enter your name', max_length=100)

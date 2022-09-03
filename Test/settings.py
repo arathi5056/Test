@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-d51k!defeyc$hrj=no@aalg=#%&8wgj557omti_a5xv%iz(gg4
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['https://testdjangoankush.herokuapp.com/']
+#ALLOWED_HOSTS = ['https://testdjangoankush.herokuapp.com/']
 
 # Application definition
 

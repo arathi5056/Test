@@ -1,1 +1,1 @@
-web: gunicorn --chdir Test Test.wsgi
+web: gunicorn run:app
